@@ -6,5 +6,4 @@ before_install:
 
 script:
   - ls -lat
-  - ./hadolint-Linux-x86_64 -f json --no-fail ./Dockerfile
-  - cat ./hadolint_results.json
+  - ./hadolint-Linux-x86_64 -f json --no-fail Dockerfile
