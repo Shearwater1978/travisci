@@ -9,7 +9,7 @@ ARG repository="deb http://repo.yandex.ru/clickhouse/deb/stable/ main/"
 ARG version=20.1.9.*
 ARG gosu_ver=1.10
 
-RUN apt-get update \
+RUN apt-get update
     && apt-get install --yes --no-install-recommends \
         apt-transport-https \
         dirmngr \
