@@ -6,9 +6,13 @@ services:
 before_install:
   - export VERSION=$(wget -q -O - https://api.github.com/repos/hadolint/hadolint/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
   - wget https://github.com/hadolint/hadolint/releases/download/v${VERSION}/hadolint-Linux-x86_64 && chmod +x hadolint-Linux-x86_64
+  - export VERSION=$(wget -q -O - https://api.github.com/repos/goodwithtech/dockle/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+  - wget https://github.com/goodwithtech/dockle/releases/download/v${VERSION}/dockle_${VERSION}_Linux-64bit.tar.gz && tar zxf dockle_${VERSION}_Linux-64bit.tar.gz
+
 
 script:
   - ls -lat
-  - ./hadolint-Linux-x86_64 -f json --no-fail Dockerfile
   - ./hadolint-Linux-x86_64 -f json --no-fail Dockerfile > hadolint.json
   - docker build . -f Dockerfile -t testimage
+  - docker save -o testimage
+  - ./dockle --exit-code 0 -f json testimage
