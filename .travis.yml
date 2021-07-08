@@ -6,4 +6,4 @@ before_install:
   - pwd
 
 script:
-  - ./hadolint-Linux-x86_64 -f json $DOCKERFILE > $ARTIFACT_FOLDER/hadolint_results.json || exit 0
+  - ./hadolint-Linux-x86_64 -f json Dockerfile > ./hadolint_results.json
