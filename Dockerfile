@@ -40,8 +40,10 @@ ENV LC_ALL en_US.UTF-8
 
 RUN mkdir /docker-entrypoint-initdb.d
 
-COPY entrypoint.sh /entrypoint.sh
-COPY config.xml /etc/clickhouse-server/config.xml
+#COPY entrypoint.sh /entrypoint.sh
+#COPY config.xml /etc/clickhouse-server/config.xml
+ADD entrypoint.sh /entrypoint.sh
+ADD config.xml /etc/clickhouse-server/config.xml
 
 RUN chmod +x \
     /entrypoint.sh \
