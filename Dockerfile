@@ -29,7 +29,7 @@ RUN apt-get update \
         /var/cache/debconf \
         /tmp/* \
     && apt-get clean \
-    && wget --no-check-certificate https://github.com/tianon/gosu/releases/download/${gosu_ver}/gosu-amd64 /bin/gosu
+    && wget --no-check-certificate https://github.com/tianon/gosu/releases/download/${gosu_ver}/gosu-amd64 -O /bin/gosu
 
 #ADD https://github.com/tianon/gosu/releases/download/$gosu_ver/gosu-amd64 /bin/gosu
 
