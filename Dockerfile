@@ -31,7 +31,8 @@ RUN apt-get update \
         /tmp/* \
     && apt-get clean
 
-ADD https://github.com/tianon/gosu/releases/download/$gosu_ver/gosu-amd64 /bin/gosu
+#ADD https://github.com/tianon/gosu/releases/download/$gosu_ver/gosu-amd64 /bin/gosu
+COPY https://github.com/tianon/gosu/releases/download/$gosu_ver/gosu-amd64 /bin/gosu
 
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -40,10 +41,8 @@ ENV LC_ALL en_US.UTF-8
 
 RUN mkdir /docker-entrypoint-initdb.d
 
-#COPY entrypoint.sh /entrypoint.sh
-#COPY config.xml /etc/clickhouse-server/config.xml
-ADD entrypoint.sh /entrypoint.sh
-ADD config.xml /etc/clickhouse-server/config.xml
+COPY entrypoint.sh /entrypoint.sh
+COPY config.xml /etc/clickhouse-server/config.xml
 
 RUN chmod +x \
     /entrypoint.sh \
