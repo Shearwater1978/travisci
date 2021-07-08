@@ -7,4 +7,4 @@ before_install:
 script:
   - ls -lat
   - ./hadolint-Linux-x86_64 -f json --no-fail Dockerfile > hadolint.json
-  - cat hadolint.json 
+  - ls -lat
