@@ -2,6 +2,9 @@ FROM ubuntu:18.04
 
 ENV CLICKHOUSE_SERVER_HOME=/opt/ch/
 
+HEALTHCHECK --interval=5m --timeout=3s \
+  CMD curl -f http://localhost/ || exit 1
+
 ARG repository="deb http://repo.yandex.ru/clickhouse/deb/stable/ main/"
 ARG version=20.1.9.*
 ARG gosu_ver=1.10
