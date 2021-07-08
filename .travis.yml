@@ -13,5 +13,5 @@ script:
   - ls -lat
   - ./hadolint-Linux-x86_64 -f json --no-fail Dockerfile > hadolint.json
   - docker build . -f Dockerfile -t testimage
-  - docker save -o testimage
+  - docker save -o testimage testimage:latest
   - ./dockle --exit-code 0 -f json testimage
