@@ -1,5 +1,8 @@
 language: bash
 
+services:
+  - docker
+
 before_install:
   - export VERSION=$(wget -q -O - https://api.github.com/repos/hadolint/hadolint/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
   - wget https://github.com/hadolint/hadolint/releases/download/v${VERSION}/hadolint-Linux-x86_64 && chmod +x hadolint-Linux-x86_64
@@ -8,5 +11,4 @@ script:
   - ls -lat
   - ./hadolint-Linux-x86_64 -f json --no-fail Dockerfile
   - ./hadolint-Linux-x86_64 -f json --no-fail Dockerfile > hadolint.json
-  - ls -lat
-  - cat hadolint.json
+  - docker build . -f Dockerfile -t testimage
