@@ -7,4 +7,4 @@ before_install:
 script:
   - pwd
   - ls -lat
-  - ./hadolint-Linux-x86_64 -f json Dockerfile > ./hadolint_results.json
+  - ./hadolint-Linux-x86_64 -f json ./Dockerfile > ./hadolint_results.json
