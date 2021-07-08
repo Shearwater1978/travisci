@@ -5,6 +5,8 @@ before_install:
   - wget https://github.com/hadolint/hadolint/releases/download/v${VERSION}/hadolint-Linux-x86_64 && chmod +x hadolint-Linux-x86_64
 
 script:
+  - cat ./Dockerfile
+  - touch ./hadolint_results.json
   - pwd
   - ls -lat
   - ./hadolint-Linux-x86_64 -f json ./Dockerfile > ./hadolint_results.json
